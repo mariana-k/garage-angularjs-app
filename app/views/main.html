@@ -1,0 +1,104 @@
+<aside id="sidebar">
+  <div class="search-block">
+    <input class="search-field" type="text" data-ng-model="search.text" placeholder="Search"/>
+  </div>
+  <div class="filters-block">
+    <h4>Levels</h4>
+    <ul>
+      <li>
+        <label>
+          <input class="filter-checkbox" type="checkbox" data-ng-model='filterLevel.level1' data-ng-true-value="'Level 1'" data-ng-false-value='' />
+          Level 1
+        </label>
+      </li>
+      <li>
+        <label>
+          <input class="filter-checkbox" type="checkbox" data-ng-model='filterLevel.level2' data-ng-true-value="'Level 2'" data-ng-false-value='' />
+          Level 2
+        </label>
+      </li>
+      <li>
+        <label>
+          <input class="filter-checkbox" type="checkbox" data-ng-model='filterLevel.level3' data-ng-true-value="'Level 3'" data-ng-false-value='' />
+          Level 3
+        </label>
+      </li>
+      <li>
+        <label>
+          <input class="filter-checkbox" type="checkbox" data-ng-model='filterLevel.level4' data-ng-true-value="'Level 4'" data-ng-false-value='' />
+          Level 4
+        </label>
+      </li>
+    </ul>
+    <h4>Type</h4>
+    <ul>
+      <li>
+        <label>
+          <input class="filter-checkbox" type="checkbox" data-ng-model='filterType.type1' data-ng-true-value="'Motorbike'" data-ng-false-value='' />
+          Motorbike
+        </label>
+      </li>
+      <li>
+        <label>
+          <input class="filter-checkbox" type="checkbox" data-ng-model='filterType.type2' data-ng-true-value="'Car'" data-ng-false-value='' />
+          Car
+        </label>
+      </li>
+  </div>
+  <div class="forms-block">
+    <h4>Add Vehicle</h4>
+    <form novalidate class="add-vehicle-form" ng-submit="addVehicle()">
+      <div>
+        <input id="vehicleplate" type="text" ng-model="vl.vehicleplate" placeholder="Vehicle Plate" />
+      </div>
+      <div>
+        <input id="vehicletype" type="text" ng-model="vl.vehicletype" placeholder="Vehicle Type" />
+      </div>
+      <div>
+        <input id="parkinglevel" type="text" ng-model="vl.parkinglevel" ng-blur="updateInput()" placeholder="Parking Level" />
+      </div>
+      <div>
+        <input id="parkingslot" type="text" ng-model="vl.parkingslot" placeholder="Parking Slot" />
+      </div>
+      <div class="form-footer">
+        <button class="add-vehicle-button">Add Vehicle</button>
+      </div>
+    </form>
+
+    <h4>Remove Vehicle</h4>
+    <form novalidate class="add-vehicle-form" ng-submit="removeVehicle()">
+      <div>
+        <input id="plate" type="text" ng-model="vl.plate" placeholder="Vehicle Plate" />
+      </div>
+      <div class="form-footer">
+        <button class="add-vehicle-button">Remove Vehicle</button>
+      </div>
+    </form>
+  </div>
+</aside>
+<section id="main">
+  <div class="page-toolbar">
+    <ul><li>{{currentPage}}</li><li>{{numPerPage}}</li></ul>
+    <span>/</span>
+    <h4><pre>{{vehiclesList.length}}</pre> <span> vehicles</span></h4>
+    <pager
+      ng-model="currentPage"
+      total-items="vehiclesList.length"
+      boundary-links="false">
+    </pager> 
+  </div>
+  <div class="page-contnet">
+  <ul class="parking-list">
+    <li class="vehicle-item" ng-repeat="it in filteredVehicles | filter:filterLevel.level1 | filter:filterLevel.level2 | filter:filterLevel.level3 | filter:filterLevel.level4 | filter:search.text | filter:filterType.type1 | filter:filterType.type2">
+      <ul class="car-details">
+        <li>{{it.plate}}</li>
+        <li>{{it.type}}</li>
+      </ul>
+      <ul class="parking-details">
+        <li>{{it.level}}</li>
+        <li>Slot {{it.slot}}</li>
+      </ul>
+    </li>
+  </ul>
+  </div>
+</section>

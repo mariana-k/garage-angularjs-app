@@ -1,0 +1,220 @@
+/**********************************
+General styles
+***********************************/
+body {
+  padding: 0;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+* {
+  font-family: Arial, serif;
+  color: #363534;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+h4 {
+  text-transform: uppercase;
+}
+
+input[type="text"] {
+  background: #fff1e7;
+  border: none;
+  height: 25px;
+  width: 250px;
+  padding: 0 10px;
+}
+
+button {
+  width: 150px;
+  height: 30px;
+  border: none;
+  background: #363534;
+  color: #ffffff;
+  margin: 10px 0 0;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#header {
+  border-top: 10px solid #363534;
+  border-bottom: 1px solid #ededed;
+}
+
+#content {
+  padding: 20px 0;
+}
+
+#sidebar {
+  float: left;
+  width: 350px;
+
+  h4 {
+    margin: 40px 0 0px;
+  }
+}
+
+#main {
+  float: right;
+  width: 650px;
+}
+
+/**********************************
+Sidebar
+***********************************/
+input.search-field {
+  background: url("../images/icons.png") no-repeat 5px -27px #fff1e7;  
+  padding: 0 10px 0 30px;
+  width: 160px;
+}
+
+.filters-block {
+  padding: 0 0 20px;
+
+  li {
+    label {
+      color: #9b4a0f;
+    }
+  }
+}
+
+.filter-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+  position: relative;
+  padding: 0 0 0 10px;
+  z-index: -1;
+  cursor: pointer;
+}
+
+.filter-checkbox:focus {
+  outline: none;
+}
+
+.filter-checkbox:before {
+  content: " ";
+  width: 10px;
+  height: 10px;
+  border: 1px solid #9b4a0f;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: -9px;
+}
+
+.filter-checkbox:checked:before {
+    background: #9b4a0f;  
+}
+
+.forms-block {
+  div {
+    padding: 5px 0;
+  }
+}
+
+.add-vehicle-form, .add-vehicle-form {
+  label {
+    display: block;
+    padding: 10px 0 5px;
+  }
+}
+
+/**********************************
+Main content
+***********************************/
+.page-toolbar {
+  ul {
+    display: inline-block;
+  }
+
+  li {
+    text-align: right;
+  }
+
+  h4 {
+    display: inline-block;
+    margin: 0;
+    line-height: 32px;
+
+    pre {
+      color: #afafaf;
+      font-size: 40px;
+      float: left;
+      margin: 0;
+    }
+
+    span {
+      display: block;
+      float: right;
+      font-size: 15px;
+      line-height: 15px;
+    }
+  }
+
+  span {
+    font-size: 40px;
+  }
+}
+
+.pager {
+  margin: 0;
+
+  li {
+    float: left;
+    margin: 3px 7px;
+    display: block;
+    width: 22px;
+    height: 20px;
+    overflow: hidden;
+    background: url("../images/icons.png") no-repeat -34px 0 transparent;
+
+    &:focus {
+      outline: none;
+    }
+
+    &.disabled {
+      background-position: 0 0;
+    }
+
+    a {
+      height: 0;
+      line-height: 0;
+      display: block;
+      overflow: hidden;
+      padding: 28px 0 0;
+    }
+  }
+}
+
+.parking-list {
+  clear: both;
+
+  > li {
+    clear: both;
+    overflow: auto;
+    zoom: 1;
+    padding: 10px 20px 10px 40px;
+    margin: 0 0 5px;
+    background: #ededed;
+  }
+}
+
+.car-details {
+  float: left;
+  width: 50%;
+}
+
+.parking-details {
+  float: right;
+  width: 50%;
+  text-align: right;
+}
+
