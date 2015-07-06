@@ -70,7 +70,7 @@ button {
 Sidebar
 ***********************************/
 input.search-field {
-  background: url("../images/icons.png") no-repeat 5px -27px #fff1e7;  
+  background: url("../images/icons.png") no-repeat 5px -34px #fff1e7;  
   padding: 0 10px 0 30px;
   width: 160px;
 }
@@ -81,6 +81,7 @@ input.search-field {
   li {
     label {
       color: #9b4a0f;
+      cursor: pointer;
     }
   }
 }
@@ -91,7 +92,6 @@ input.search-field {
   appearance:         none;
   position: relative;
   padding: 0 0 0 10px;
-  z-index: -1;
   cursor: pointer;
 }
 
@@ -174,14 +174,26 @@ Main content
     width: 22px;
     height: 20px;
     overflow: hidden;
-    background: url("../images/icons.png") no-repeat -34px 0 transparent;
+    background: url("../images/icons.png") no-repeat 0 0 transparent;
+
+    &.previous {
+      background-position: 0 -15px;
+
+      &.disabled {
+        background-position: 0 3px;
+      }
+    }
+
+    &.next {
+      background-position: -34px 3px;
+
+      &.disabled {
+        background-position: -34px -15px;
+      }
+    }
 
     &:focus {
       outline: none;
-    }
-
-    &.disabled {
-      background-position: 0 0;
     }
 
     a {

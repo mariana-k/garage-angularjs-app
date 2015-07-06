@@ -55,7 +55,7 @@
         <input id="vehicletype" type="text" ng-model="vl.vehicletype" placeholder="Vehicle Type" />
       </div>
       <div>
-        <input id="parkinglevel" type="text" ng-model="vl.parkinglevel" ng-blur="updateInput()" placeholder="Parking Level" />
+        <input id="parkinglevel" type="text" ng-model="vl.parkinglevel" ng-blur="updateInputValue()" placeholder="Parking Level" />
       </div>
       <div>
         <input id="parkingslot" type="text" ng-model="vl.parkingslot" placeholder="Parking Slot" />
@@ -78,7 +78,7 @@
 </aside>
 <section id="main">
   <div class="page-toolbar">
-    <ul><li>{{currentPage}}</li><li>{{numPerPage}}</li></ul>
+    <ul><li>{{currentPage}}</li><li>{{filteredVehicles.length}}</li></ul>
     <span>/</span>
     <h4><pre>{{vehiclesList.length}}</pre> <span> vehicles</span></h4>
     <pager

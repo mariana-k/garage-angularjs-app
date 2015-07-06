@@ -1,3 +1,4 @@
+(function(){
 'use strict';
 
 /**
@@ -24,3 +25,4 @@ angular
         redirectTo: '/'
       });
   });
+})();
