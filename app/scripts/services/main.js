@@ -96,53 +96,53 @@ angular.module('garageApp')
 angular.module('garageApp')
 	.service('AddVehicle', function() {
 	
-	// constructor
-    function AddVehicle(scope) {
-        this._scope = scope;
+		// constructor
+	    function AddVehicle(scope) {
+	        this._scope = scope;
 
-        this._addVehicle();
-    }
+	        this._addVehicle();
+	    }
 
-    // reference the scope
-	AddVehicle.prototype._addVehicle = function() {
-		var existingPlate = [],
-			occupiedSlot = [],
-			vehiclePlateValue = document.getElementById("vehicleplate").value,
-			parkingSlotValue = document.getElementById("parkingslot").value,
-			parkingLevelValue = document.getElementById("parkinglevel").value,
-			newVehicle = {
-	        "plate": this._scope.vehicleplate,
-	        "type": this._scope.vehicletype,
-	        "level": this._scope.parkinglevel,
-	        "slot": this._scope.parkingslot
-	    };
+	    // reference the scope
+		AddVehicle.prototype._addVehicle = function() {
+			var existingPlate = [],
+				occupiedSlot = [],
+				vehiclePlateValue = document.getElementById("vehicleplate").value,
+				parkingSlotValue = document.getElementById("parkingslot").value,
+				parkingLevelValue = document.getElementById("parkinglevel").value,
+				newVehicle = {
+		        "plate": this._scope.vehicleplate,
+		        "type": this._scope.vehicletype,
+		        "level": this._scope.parkinglevel,
+		        "slot": this._scope.parkingslot
+		    };
 
-		if (vehiclePlateValue && parkingSlotValue && parkingLevelValue) {
-			for (var key in this._scope.vehiclesList) {
-				// add element to existingPlate array if a vehicle with this plate is already in the parking list
-		    	if(this._scope.vehiclesList[key].plate === this._scope.vehicleplate && existingPlate.length === 0) {
-		    		existingPlate.push("Plate exists");
+			if (vehiclePlateValue && parkingSlotValue && parkingLevelValue) {
+				for (var key in this._scope.vehiclesList) {
+					// add element to existingPlate array if a vehicle with this plate is already in the parking list
+			    	if(this._scope.vehiclesList[key].plate === this._scope.vehicleplate && existingPlate.length === 0) {
+			    		existingPlate.push("Plate exists");
+					}
+
+					// add element to occupiedSlot array if the slot in this level is not available
+					// and alert a warning
+					if (this._scope.vehiclesList[key].slot === this._scope.parkingslot && this._scope.vehiclesList[key].level === this._scope.parkinglevel && occupiedSlot.length === 0) {
+						occupiedSlot.push("Slot occupied");
+						alert("This slot is not available");
+					}
 				}
 
-				// add element to occupiedSlot array if the slot in this level is not available
-				// and alert a warning
-				if (this._scope.vehiclesList[key].slot === this._scope.parkingslot && this._scope.vehiclesList[key].level === this._scope.parkinglevel && occupiedSlot.length === 0) {
-					occupiedSlot.push("Slot occupied");
-					alert("This slot is not available");
+				if (existingPlate.length === 0 && occupiedSlot.length === 0) {
+					// add a vehicle if both existingPlate and occupiedSlot arrays are empty
+					this._scope.vehiclesList.push(newVehicle);
+
+					// update the parking list
+					this._scope.watchVehiclesList();
 				}
 			}
+		};
 
-			if (existingPlate.length === 0 && occupiedSlot.length === 0) {
-				// add a vehicle if both existingPlate and occupiedSlot arrays are empty
-				this._scope.vehiclesList.push(newVehicle);
-
-				// update the parking list
-				this._scope.watchVehiclesList();
-			}
-		}
-	};
-
-    return AddVehicle;
-});
+	    return AddVehicle;
+	});
 })();
  
